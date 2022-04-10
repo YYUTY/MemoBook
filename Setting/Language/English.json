@@ -1,0 +1,20 @@
+{
+  "Langage":"English",
+  "Menu":{
+    "File":{
+      "File":"File",
+      "New File":"New File",
+      "Open File":"Open File",
+      "Save":"Save",
+      "Save As":"Save As...",
+      "Exit":"Exit"
+    },
+    "Edit":{
+      "Undo":"Undo"
+    },
+  },
+  "Error":{
+    "Error":"Error",
+    "No files to save":"No files to save"
+  }
+}

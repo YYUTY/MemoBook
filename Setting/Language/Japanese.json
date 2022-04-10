@@ -1,0 +1,26 @@
+{
+  "Language":"日本語",
+  "Menu":{
+    "File":{
+      "File":"ファイル(F)",
+      "New File":"新規ファイル(N)",
+      "Open File":"ファイルを開く(O)",
+      "Setting":"設定(T)",
+      "Save":"保存(S)",
+      "Save As":"名前をつけて保存(A)",
+      "Exit":"終了(X)"
+    },
+    "Edit":{
+      "Edit":"編集(E)",
+      "Undo":"元に戻す(U)"
+    }
+  },
+  "Setting":{
+    "Language":"言語"
+  },
+  "Error":{
+    "Error":"エラー",
+    "File not selected":"ファイルが選択されてません。",
+    "No files to save":"保存するファイルがありません。"
+  }
+}
