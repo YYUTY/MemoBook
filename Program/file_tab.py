@@ -29,6 +29,7 @@ class CustomNotebook(ttk.Notebook):
         self._active=None
 
         self.bind('<ButtonPress-1>', self.on_close_press, True)
+        self.bind('<Motion>',self.on_close)
         self.bind('<ButtonRelease-1>', self.on_close_release)
 
     def on_close_press(self, event):
@@ -39,9 +40,19 @@ class CustomNotebook(ttk.Notebook):
         if 'close' in element:
             index=self.index('@%d,%d' % (event.x, event.y))
             self.state(['pressed'])
+            self.state(['!hover'])
             self._active=index
             return 'break'
-
+    def on_close(self, event):
+        if event.x>141:
+            x=event.x//140
+        else:
+            x=0
+        if event.x>111+140*x and event.x<131+140*x+x-1:
+            self.state(['!hover'])
+        else:
+            self.state(['hover'])
+        x=0
     def on_close_release(self, event):
         '''Called when the button is released'''
         if not self.instate(['pressed']):
@@ -64,23 +75,14 @@ class CustomNotebook(ttk.Notebook):
     def __initialize_custom_style(self):
         style=ttk.Style()
         self.images=(
-            tk.PhotoImage('img_close', data='''
-                R0lGODlhCAAIAMIBAAAAADs7O4+Pj9nZ2Ts7Ozs7Ozs7Ozs7OyH+EUNyZWF0ZWQg
-                d2l0aCBHSU1QACH5BAEKAAQALAAAAAAIAAgAAAMVGDBEA0qNJyGw7AmxmuaZhWEU
-                5kEJADs=
-                '''),
-            tk.PhotoImage('img_closeactive', data='''
-                R0lGODlhCAAIAMIEAAAAAP/SAP/bNNnZ2cbGxsbGxsbGxsbGxiH5BAEKAAQALAAA
-                AAAIAAgAAAMVGDBEA0qNJyGw7AmxmuaZhWEU5kEJADs=
-                '''),
-            tk.PhotoImage('img_closepressed', data='''
-                R0lGODlhCAAIAMIEAAAAAOUqKv9mZtnZ2Ts7Ozs7Ozs7Ozs7OyH+EUNyZWF0ZWQg
-                d2l0aCBHSU1QACH5BAEKAAQALAAAAAAIAAgAAAMVGDBEA0qNJyGw7AmxmuaZhWEU
-                5kEJADs=
-            ''')
+            tk.PhotoImage('img_close',file='no.png'),
+            tk.PhotoImage('img_on',file='close.png'),
+            tk.PhotoImage('img_closeactive', file='closeactive.png'),
+            tk.PhotoImage('img_closepressed', file='closed.png')
         )
 
         style.element_create('close', 'image', 'img_close',
+                            ('active','hover','img_on'),
                             ('active', 'pressed', '!disabled', 'img_closepressed'),
                             ('active', '!disabled', 'img_closeactive'), border=8, sticky='')
         style.layout('CustomNotebook', [('CustomNotebook.client', {'sticky': 'nswe'})])
@@ -89,7 +91,7 @@ class CustomNotebook(ttk.Notebook):
                 'sticky': 'nswe',
                 'children': [
                     ('CustomNotebook.padding', {
-                        'side': 'top',
+                        'side': 'left',
                         'sticky': 'nswe',
                         'children': [
                             ('CustomNotebook.focus', {
@@ -105,7 +107,6 @@ class CustomNotebook(ttk.Notebook):
             ]
         })
     ])
-
 
 class SbTextFrame(tk.Frame):
     def __init__(self,master):
