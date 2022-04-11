@@ -75,14 +75,14 @@ class CustomNotebook(ttk.Notebook):
     def __initialize_custom_style(self):
         style=ttk.Style()
         self.images=(
-            tk.PhotoImage('img_close',file='no.png'),
-            tk.PhotoImage('img_on',file='close.png'),
-            tk.PhotoImage('img_closeactive', file='closeactive.png'),
-            tk.PhotoImage('img_closepressed', file='closed.png')
+            tk.PhotoImage('img_close',file=va.path+"/Setting/Texture/Tab_Close/no.png"),
+            tk.PhotoImage('img_on',file=va.path+'/Setting/Texture/Tab_Close/close.png'),
+            tk.PhotoImage('img_closeactive', file=va.path+'/Setting/Texture/Tab_Close/closeactive.png'),
+            tk.PhotoImage('img_closepressed', file=va.path+'/Setting/Texture/Tab_Close/closed.png')
         )
 
         style.element_create('close', 'image', 'img_close',
-                            ('active','hover','img_on'),
+                            ('active','hover','pressed','img_on'),
                             ('active', 'pressed', '!disabled', 'img_closepressed'),
                             ('active', '!disabled', 'img_closeactive'), border=8, sticky='')
         style.layout('CustomNotebook', [('CustomNotebook.client', {'sticky': 'nswe'})])
@@ -161,13 +161,13 @@ class File_tab(tk.Frame):
                 tframe.text.insert('end',line)
         self.fnames.append(fname)
         title=os.path.basename(fname)
-        self.notebook.add(tframe,text=title)
+        self.notebook.add(tframe,text='          '+title)
         self.notebook.select(self.notebook.tabs()[self.notebook.index('end')-1])
     @thread
     def setting(self):
         sf=Setting_Frame(self.notebook)
         self.tframes.append(sf)
-        self.notebook.add(sf,text='Setting')
+        self.notebook.add(sf,text='                              Setting                    ')
         self.notebook.select(self.notebook.tabs()[self.notebook.index('end')-1])
     @thread
     def filesave(self):

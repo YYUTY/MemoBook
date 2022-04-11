@@ -14,10 +14,9 @@ def json_read():
 
 def main():
     va.root=tk.Tk()
+    va.path=os.getcwd()
     va.root.title('MemoBook')
-    va.root.geometry('640x480')
-    style = ttk.Style(va.root)
-    style.configure('CustomNotebook.tab', expand=(20,100,20,0))
+    va.root.geometry('1920x1080')
     va.nt=ft.File_tab(va.root)
     m=menu.Menu(tk.Menu(va.root))
     va.root.mainloop()
