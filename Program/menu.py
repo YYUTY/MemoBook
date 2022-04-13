@@ -10,7 +10,7 @@ class Menu():
         va.root.config(menu=self.menubar)
     def file(self):
         self.filemenu=tk.Menu(self.menubar,tearoff=0)
-        self.filemenu.add_command(label=va.lang['Menu']['File']['New File'],command=va.nt.add_tab)
+        self.filemenu.add_command(label=va.lang['Menu']['File']['New File'],command=va.nt.add_tab,accelerator='Ctrl+N')
         self.filemenu.add_command(label=va.lang['Menu']['File']['Open File'],command=va.nt.fileopen)
         self.filemenu.add_separator()
         self.filemenu.add_command(label=va.lang['Menu']['File']['Setting'],command=va.nt.setting)

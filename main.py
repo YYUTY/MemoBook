@@ -6,7 +6,7 @@ import tkinter.ttk as ttk
 from Program import variable as va
 from Program import file_tab as ft
 
-def json_read():
+def init():
     with open('./Setting/Setting.json','r', encoding="utf-8") as f:
         va.setting=json.load(f)
     with open('./Setting/Language/'+str(va.setting["Language"])+'.json','r', encoding="utf-8") as f:
@@ -22,5 +22,5 @@ def main():
     va.root.mainloop()
 
 if __name__ == '__main__':
-    json_read()
+    init()
     main()

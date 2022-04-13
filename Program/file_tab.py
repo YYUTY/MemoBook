@@ -1,7 +1,9 @@
 import os
 import sys
+import glob
 import tkinter as tk
 import threading as th
+from pathlib import Path
 import tkinter.ttk as ttk
 from Program import variable as va
 from tkinter import filedialog as fl
@@ -40,19 +42,14 @@ class CustomNotebook(ttk.Notebook):
         if 'close' in element:
             index=self.index('@%d,%d' % (event.x, event.y))
             self.state(['pressed'])
-            self.state(['!hover'])
             self._active=index
             return 'break'
     def on_close(self, event):
-        if event.x>141:
-            x=event.x//140
-        else:
-            x=0
-        if event.x>111+140*x and event.x<131+140*x+x-1:
-            self.state(['!hover'])
-        else:
+        element=self.identify(event.x, event.y)
+        if not 'close' in element:
             self.state(['hover'])
-        x=0
+        else:
+            self.state(['!hover'])
     def on_close_release(self, event):
         '''Called when the button is released'''
         if not self.instate(['pressed']):
@@ -82,7 +79,7 @@ class CustomNotebook(ttk.Notebook):
         )
 
         style.element_create('close', 'image', 'img_close',
-                            ('active','hover','pressed','img_on'),
+                            ('active','hover','img_on'),
                             ('active', 'pressed', '!disabled', 'img_closepressed'),
                             ('active', '!disabled', 'img_closeactive'), border=8, sticky='')
         style.layout('CustomNotebook', [('CustomNotebook.client', {'sticky': 'nswe'})])
@@ -127,14 +124,23 @@ class SbTextFrame(tk.Frame):
         self.y_sb=y_sb
 
 class Setting_Frame(tk.Frame):
+    @thread
     def __init__(self,master):
         tk.Frame.__init__(self,master)
         left=tk.Frame(self,relief='flat',bg="black")
         right=tk.Frame(self,relief='flat',pady=5,padx=5,bg="white")
-        bt = tk.Button(left,text=va.lang['Setting']['Language'],width=20,height=3)
+        bt = tk.Button(left,text=va.lang['Setting']['Language'],width=30,height=3)
         bt.pack()
-        label = tk.Label(right, text='This is Label.')
+        label = tk.Label(right, text=va.lang['Setting']['Language'])
         label.pack()
+        lang=list()
+        for f in glob.glob('Setting/Language/*.json'):
+            lang_list = Path(f).stem
+            if not lang_list == 'Language':
+                lang.append(lang_list)
+        lc = ttk.Combobox(right,values=lang)
+        lc.current(lang.index(va.lang['Language']))
+        lc.pack()
         left.pack(side=tk.LEFT, fill=tk.Y)
         right.pack(side=tk.LEFT, fill=tk.Y)
 
@@ -161,7 +167,7 @@ class File_tab(tk.Frame):
                 tframe.text.insert('end',line)
         self.fnames.append(fname)
         title=os.path.basename(fname)
-        self.notebook.add(tframe,text='          '+title)
+        self.notebook.add(tframe,text='                              '+title+'                    ')
         self.notebook.select(self.notebook.tabs()[self.notebook.index('end')-1])
     @thread
     def setting(self):
