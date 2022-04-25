@@ -15,7 +15,8 @@ Run a main.py
 ## Features
 
 ## Reference
-- [Tkinterでタブを使ったアプリ](https://qiita.com/TANAKA-V/items/57f88d6c1ab6450faf4f)
+- [App Base](https://qiita.com/TANAKA-V/items/57f88d6c1ab6450faf4f)
+- [Close Button](https://stackoverflow.com/questions/39458337/is-there-a-way-to-add-close-buttons-to-tabs-in-tkinter-ttk-notebook)
 ## Author
 
 [twitter](https://twitter.com/Kotabrog)
