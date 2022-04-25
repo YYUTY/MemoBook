@@ -3,7 +3,7 @@
 ![png](https://github.com/YYUTY/MemoBook/blob/master/Setting/Texture/Picture/start.png)
 
 ## Overview：概要
-It is just a notepad. Please feel free to use it.
+It is just a notepad. Please feel free to use it.  
 ただのメモ帳です。ご自由にお使いください。
 
 ## Recommended System Requirements：推奨動作環境
@@ -12,7 +12,7 @@ It is just a notepad. Please feel free to use it.
 - Tkinter 8.6.12
 
 ## Usage：利用方法
-Run a main.py
+Run a main.py  
 main.pyを起動してください。
 
 ## Features
