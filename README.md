@@ -23,4 +23,4 @@ Run a main.py
 
 ## Licence
 
-[MIT](https://......)
+[This software is released under the MIT License, see LICENSE.txt.](https://......)
