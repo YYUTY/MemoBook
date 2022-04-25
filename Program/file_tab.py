@@ -10,7 +10,7 @@ from Program import variable as va
 from tkinter import filedialog as fl
 from tkinter import messagebox as mb
 
-def thread(func):#デコレータ
+def thread(func):
     def wrapper(*args, **kwargs):
         try:
             x=list()
