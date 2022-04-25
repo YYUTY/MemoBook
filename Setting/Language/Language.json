@@ -16,7 +16,8 @@
     },
   },
   "Setting":{
-    "Theme":""
+    "CoreSetting":"",
+    "Language":""
   },
   "Error":{
     "Error":"",

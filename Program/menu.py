@@ -23,4 +23,9 @@ class Menu():
     def edit(self):
         self.editmenu=tk.Menu(self.menubar,tearoff=0)
         self.editmenu.add_command(label=va.lang['Menu']['Edit']['Undo'])
+        self.editmenu.add_command(label=va.lang['Menu']['Edit']['Redo'])
+        self.editmenu.add_separator()
+        self.editmenu.add_command(label=va.lang['Menu']['Edit']['Cut'])
+        self.editmenu.add_command(label=va.lang['Menu']['Edit']['Copy'])
+        self.editmenu.add_command(label=va.lang['Menu']['Edit']['Paste'])
         self.menubar.add_cascade(label=va.lang['Menu']['Edit']['Edit'],menu=self.editmenu)
