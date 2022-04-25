@@ -5,14 +5,19 @@ import tkinter as tk
 import threading as th
 from pathlib import Path
 import tkinter.ttk as ttk
+import tkinter.font as font
 from Program import variable as va
 from tkinter import filedialog as fl
 from tkinter import messagebox as mb
 
 def thread(func):#デコレータ
     def wrapper(*args, **kwargs):
-        x=th.Thread(target=func(*args, **kwargs))
-        x.start()
+        try:
+            x=list()
+            x.append(th.Thread(target=func(*args, **kwargs)))
+            x[len(x)-1].start()
+        except ValueError:
+            pass
     return wrapper
 
 class CustomNotebook(ttk.Notebook):
@@ -72,10 +77,10 @@ class CustomNotebook(ttk.Notebook):
     def __initialize_custom_style(self):
         style=ttk.Style()
         self.images=(
-            tk.PhotoImage('img_close',file=va.path+"/Setting/Texture/Tab_Close/no.png"),
-            tk.PhotoImage('img_on',file=va.path+'/Setting/Texture/Tab_Close/close.png'),
-            tk.PhotoImage('img_closeactive', file=va.path+'/Setting/Texture/Tab_Close/closeactive.png'),
-            tk.PhotoImage('img_closepressed', file=va.path+'/Setting/Texture/Tab_Close/closed.png')
+            tk.PhotoImage('img_close',file=va.path+"/Setting/Texture/Picture/no.png"),
+            tk.PhotoImage('img_on',file=va.path+'/Setting/Texture/Picture/close.png'),
+            tk.PhotoImage('img_closeactive', file=va.path+'/Setting/Texture/Picture/closeactive.png'),
+            tk.PhotoImage('img_closepressed', file=va.path+'/Setting/Texture/Picture/closed.png')
         )
 
         style.element_create('close', 'image', 'img_close',
@@ -108,7 +113,7 @@ class CustomNotebook(ttk.Notebook):
 class SbTextFrame(tk.Frame):
     def __init__(self,master):
         super().__init__(master)
-        text=tk.Text(self,wrap='none',undo=True)
+        text=tk.Text(self,wrap='none',undo=True,bg=va.skin['background'],fg=va.skin['foreground'])
         x_sb=tk.Scrollbar(self,orient='horizontal')
         y_sb=tk.Scrollbar(self,orient='vertical')
         x_sb.config(command=text.xview)
@@ -117,28 +122,47 @@ class SbTextFrame(tk.Frame):
         text.grid(column=0,row=0,sticky='nsew')
         x_sb.grid(column=0,row=1,sticky='ew')
         y_sb.grid(column=1,row=0,sticky='ns')
+        fonts=font.Font(family='Menlo Regular', size=14)
+        text.configure(font=fonts)
         self.columnconfigure(0,weight=1)
         self.rowconfigure(0,weight=1)
         self.text=text
         self.x_sb=x_sb
         self.y_sb=y_sb
+        self.color
+    @thread
+    def color(self):
+        self.text.tag_configure("r", foreground="#FF0000")
+        while True:
+            if self.text.get(tk.INSERT-3.0, "end") =='def':
+                self.text.delete(tk.INSERT-3.0, 'end')
+                self.text.insert('insert', 'def',r)
+
+class StartCanvas(tk.Frame):
+    def __init__(self,master):
+        super().__init__(master)
+        self.canvas=tk.Canvas(self)
+        self.img=tk.PhotoImage(file="./Setting/Texture/Picture/start.png")
+        self.img=self.img.subsample(1)
+        self.canvas.create_image(0, 0, image=self.img, anchor=tk.NW)
+        self.canvas.place(width=1915,height=1000)
 
 class Setting_Frame(tk.Frame):
     @thread
     def __init__(self,master):
         tk.Frame.__init__(self,master)
-        left=tk.Frame(self,relief='flat',bg="black")
-        right=tk.Frame(self,relief='flat',pady=5,padx=5,bg="white")
-        bt = tk.Button(left,text=va.lang['Setting']['Language'],width=30,height=3)
+        left=tk.Frame(self,relief='flat')
+        right=tk.Frame(self,relief='flat',pady=5,padx=5)
+        bt = tk.Button(left,text=va.lang['Setting']['CoreSetting'],width=30,height=3)
         bt.pack()
-        label = tk.Label(right, text=va.lang['Setting']['Language'])
+        label = tk.Label(right,width=1000,font=('',30),anchor="w",text=va.lang['Setting']['Language'])
         label.pack()
         lang=list()
         for f in glob.glob('Setting/Language/*.json'):
             lang_list = Path(f).stem
             if not lang_list == 'Language':
                 lang.append(lang_list)
-        lc = ttk.Combobox(right,values=lang)
+        lc = ttk.Combobox(right,values=lang,state="readonly",width=200,height=30)
         lc.current(lang.index(va.lang['Language']))
         lc.pack()
         left.pack(side=tk.LEFT, fill=tk.Y)
@@ -168,6 +192,15 @@ class File_tab(tk.Frame):
         self.fnames.append(fname)
         title=os.path.basename(fname)
         self.notebook.add(tframe,text='                              '+title+'                    ')
+        self.notebook.select(self.notebook.tabs()[self.notebook.index('end')-1])
+    @thread
+    def start(self):
+        fname='Welcome'
+        tframe=StartCanvas(self.notebook)
+        title=os.path.basename(fname)
+        self.tframes.append(tframe)
+        self.fnames.append(fname)
+        self.notebook.add(tframe,text='                              '+fname+'                    ')
         self.notebook.select(self.notebook.tabs()[self.notebook.index('end')-1])
     @thread
     def setting(self):
