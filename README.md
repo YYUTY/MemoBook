@@ -10,11 +10,12 @@
 - Tkinter 8.6.12
 
 ## Usage
+Run a main.py
 
 ## Features
 
 ## Reference
-
+- [Tkinterでタブを使ったアプリ]https://qiita.com/TANAKA-V/items/57f88d6c1ab6450faf4f
 ## Author
 
 [twitter](https://twitter.com/Kotabrog)
