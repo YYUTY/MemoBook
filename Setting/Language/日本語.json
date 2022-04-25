@@ -12,11 +12,16 @@
     },
     "Edit":{
       "Edit":"編集(E)",
-      "Undo":"元に戻す(U)"
+      "Undo":"元に戻す(U)",
+      "Redo":"やり直し(R)",
+      "Cut":"切り取り(T)",
+      "Copy":"コピー(C)",
+      "Paste":"貼り付け(P)"
     }
   },
   "Setting":{
-    "Language":"言語"
+    "CoreSetting":"コア設定",
+    "Language":"\n　　言語\n"
   },
   "Error":{
     "Error":"エラー",
