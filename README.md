@@ -1,5 +1,4 @@
 # MemoBook
-
 ![png](https://github.com/YYUTY/MemoBook/blob/master/Setting/Texture/Picture/start.png)
 
 ## Overview：概要
@@ -12,10 +11,11 @@ It is just a notepad. Please feel free to use it.
 - Tkinter 8.6.12
 
 ## Usage：利用方法
-Run a main.py  
-main.pyを起動してください。
+After installing ./Setting/Font/Menlo-Regular.ttf, run main.py
+./Setting/Font/Menlo-Regular.ttfをインストールした後、main.pyを起動してください。
 
-## Features
+## Description：説明
+
 
 ## Reference：参照
 - [App Base](https://qiita.com/TANAKA-V/items/57f88d6c1ab6450faf4f)
