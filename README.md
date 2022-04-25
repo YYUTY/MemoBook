@@ -11,7 +11,7 @@ It is just a notepad. Please feel free to use it.
 - Tkinter 8.6.12
 
 ## Usage：利用方法
-After installing ./Setting/Font/Menlo-Regular.ttf, run main.py
+After installing ./Setting/Font/Menlo-Regular.ttf, run main.py  
 ./Setting/Font/Menlo-Regular.ttfをインストールした後、main.pyを起動してください。
 
 ## Description：説明
