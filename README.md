@@ -25,5 +25,5 @@ main.pyを起動してください。
 [Instagram](https://www.instagram.com/yatsuha_sd/)
 
 ## Licence：ライセンス
-[This software is released under the MIT License, see LICENSE.txt.](https://github.com/YYUTY/MemoBook/blob/master/LICENSE.txt)
+[This software is released under the MIT License, see LICENSE.txt.](https://github.com/YYUTY/MemoBook/blob/master/LICENSE.txt)  
 [本ソフトウェアはMITライセンスで公開されています。LICENSE.txtを参照してください。](https://github.com/YYUTY/MemoBook/blob/master/LICENSE.txt)
