@@ -18,8 +18,8 @@ After installing ./Setting/Font/Menlo-Regular.ttf, run main.py
 
 
 ## Reference：参照
-- [App Base](https://qiita.com/TANAKA-V/items/57f88d6c1ab6450faf4f)
-- [Close Button](https://stackoverflow.com/questions/39458337/is-there-a-way-to-add-close-buttons-to-tabs-in-tkinter-ttk-notebook)
+- [App Base(アプリベース)](https://qiita.com/TANAKA-V/items/57f88d6c1ab6450faf4f)
+- [Close Button(クローズボタン)](https://stackoverflow.com/questions/39458337/is-there-a-way-to-add-close-buttons-to-tabs-in-tkinter-ttk-notebook)
 
 ## Author：作者
 [Instagram](https://www.instagram.com/yatsuha_sd/)
