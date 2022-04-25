@@ -19,7 +19,7 @@ Run a main.py
 - [Close Button](https://stackoverflow.com/questions/39458337/is-there-a-way-to-add-close-buttons-to-tabs-in-tkinter-ttk-notebook)
 ## Author
 
-[twitter](https://twitter.com/Kotabrog)
+[Instagram](https://www.instagram.com/yatsuha_sd/)
 
 ## Licence
 
