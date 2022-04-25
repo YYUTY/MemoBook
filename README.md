@@ -23,4 +23,4 @@ Run a main.py
 
 ## Licence
 
-[This software is released under the MIT License, see LICENSE.txt.](https://......)
+[This software is released under the MIT License, see LICENSE.txt.](https://github.com/YYUTY/MemoBook/blob/master/LICENSE.txt)
